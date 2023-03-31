@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IEmployee } from 'src/app/models/employee.model';
 import { EmployeesService } from 'src/app/services/employees.service';
 
@@ -17,13 +18,13 @@ export class AddEmployeeComponent implements OnInit {
     salary: 0,
     department: ''
   };
-  constructor(private employeeService: EmployeesService) {}
+  constructor(private employeeService: EmployeesService, private router: Router) {}
 
   ngOnInit(): void{}
 
   addEmployee() {
     this.employeeService.addEmployee(this.addEmployeeRequest).subscribe({
-      next: (employee) => {console.log(employee)},
+      next: (employee) => {console.log(employee); this.router.navigate(['/']);},
       error: (response) => {console.log(response)}
     });
   }
