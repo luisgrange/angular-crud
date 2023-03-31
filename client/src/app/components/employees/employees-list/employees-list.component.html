@@ -15,6 +15,7 @@
                         <th>Salary</th>
                         <th>Department</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,7 +26,9 @@
                         <td>{{employee.phone}}</td>
                         <td>{{employee.salary}}</td>
                         <td>{{employee.department}}</td>
-                        <td><a routerLink="['/employees','edit', employee.id]">View</a></td>
+                        <td><a [routerLink]="['/employees','edit', employee.id]">View</a></td>
+                        <td><button type="button" class="btn btn-danger" (click)="deleteEmployee(employee.id)">X</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
